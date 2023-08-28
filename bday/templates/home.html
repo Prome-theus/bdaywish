@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    {% comment %} <link rel="stylesheet" href="/static/home.css"> {% endcomment %}
+  </head>
+  <body style="background-color:black;
+  justify-content: center;
+  align-items: center;">
+  {% comment %} <body> {% endcomment %}
+    <h1 class="text-center my-3 bg-dark text-white"> BDAY WISH GENERATOR </h1>
+
+    <div class="container fs-4">
+      <form class="text-white" action="/main/" method='post'>
+        {% csrf_token %}
+
+        <label for="fname">Who's birthday (full name):</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text">First and last name</span>
+          <input type="text" id="fname"
+          name="fname"
+          placeholder="first name"
+          required class="form-control">
+          <input type="text" id="lname"
+          name="lname"
+          placeholder="last name"
+          required class="form-control">
+        </div>
+  
+        <label for="email">birthday person email :</label>
+        <input
+          type="email"
+          class="form-control form-control-lg"
+          id="email"
+          name="email"
+          placeholder="Enter birthday person email"
+          required
+        /><br/>
+        
+        <label for="msg">Enter the message for your bday wish</label>
+        <textarea id="msg" class="form-control form-control-lg" name="msg" rows="4" cols="50">
+Happy birthday! Celebrate with joy and loved ones. May this year bring blessings, happiness, and success. Embrace opportunities, pursue dreams, and remember you're loved. Enjoy every moment and have an amazing year ahead! 🎉🎂
+        </textarea>
+        <br />
+      
+  
+        <label for="audio">Enter the audio u wanna be played at back(mp3)</label>
+        <p>default audio : <p>
+        <audio controls>
+        <source src="/static/hbd.mp3" type="audio/mpeg">
+        </audio>
+        <br><br>
+        <input
+          type="file"
+          id="audio"
+          name="audio"
+          placeholder="upload music"
+          accept=".mp3,audio/*"
+          
+        /><br /><br /> 
+        {% comment %}
+          <audio controls >
+            <source src=" {% if record.audio_file %} {{ record.audio_file.url }} {% endif %}" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+        {% endcomment %}
+        <div class="col-md-12 text-center">
+             <input type="submit" class="btn btn-primary" value="Submit" />
+        </div>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></scrip>
+  </body>
+</html>
